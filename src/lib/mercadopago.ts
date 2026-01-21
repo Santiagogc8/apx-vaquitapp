@@ -31,15 +31,15 @@ export async function createSingleProductPreference(
   // Todas las opciones en
   // https://www.mercadopago.com.ar/developers/es/reference/preferences/_checkout_preferences/post
 
-  return pref.create({
-    body: {
-      items: [
+  return pref.create({ // Retornamos la preferencia creada 
+    body: { // Le pasamos el body 
+      items: [ // Y los items
         {
           id: options.productId,
           title: options.productName,
           description: options.productDescription,
-          quantity: 1,
-          currency_id: "COP",
+          quantity: 1, // La cantidad es de 1 
+          currency_id: "COP", // Y la moneda son pesos colombianos
           unit_price: options.productPrice,
         },
       ],
@@ -56,9 +56,10 @@ export async function createSingleProductPreference(
   });
 }
 
+// La funcion getPaymentById obtiene un id
 export async function getPaymentById(id: string) {
-  const payment = new Payment(client);
-  return payment.get({ id });
+  const payment = new Payment(client); // Crea un nuevo payment con el cliente (creado en la preferencia con el objeto del cliente)
+  return payment.get({ id }); // Obtenemos el payment y devolvemos el id
 }
 
 export type WebhokPayload = {

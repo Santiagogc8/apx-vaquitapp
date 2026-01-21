@@ -36,20 +36,22 @@ export async function getConfirmedPayments(): Promise<Purchase[]> {
   ];
 }
 
+// La funcion createPurchase obtiene un newPurchInput que es de tipo Purchase o "from" | "amount" | "message" (lo que le enviamos en el form) y regresa una promesa
 export async function createPurchase(
   newPurchInput: Pick<Purchase, "from" | "amount" | "message">
 ): Promise<string> {
-  const purchase = {
+  const purchase = { // Crea el objeto purchase y le agrega un estado y una fecha
     ...newPurchInput,
     date: new Date(),
     status: "pending",
   };
-  // guardamos esta nueva purchase en la db y devolvemos el id
+  // guardamos esta nueva purchase en la db y devolvemos el id (este id normalmente es un uuid, pero en este caso es un 1234)
   return "1234";
 }
 
+// En esta funcion de confirmPurchase le pasamos el id
 export function confirmPurchase(purchaseId: string) {
-  // confirmamos la compra en la DB
+  // Y aqui confirmariamos la compra en la DB creando el registro en la db (o cambiando su estado a approved)
   console.log(`Purchase ${purchaseId} confirmed`);
   return true;
 }

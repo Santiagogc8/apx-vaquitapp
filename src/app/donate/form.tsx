@@ -1,12 +1,16 @@
-"use client";
+"use client"; //  Esto le dice a react "Oye, a partir de este archivo (y sus hijos), necesito que envíes el JavaScript al navegador porque voy a usar interactividad (clicks, useState, useEffect)"
+// El formulario necesita "use client" porque interactúa con el usuario antes de enviar nada.
+
+// Importaciones
 import { donateAction } from "./actions";
 import styles from "./form.module.scss";
 
+// Formlario comun
 export function DonationForm() {
   return (
     <form
       className={styles.form}
-      action={donateAction}
+      action={donateAction} // Le pasamos al action nuestra funcion de donateAction
     >
       <div className={styles.field}>
         <div className={styles.label}>Nombre</div>
@@ -37,7 +41,7 @@ export function DonationForm() {
       </div>
 
       <button
-        type="submit"
+        type="submit" // Al hacer submit, ejecutamos el action (donateAction)
         className={styles.payButton}
       >
         Donar
