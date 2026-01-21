@@ -1,15 +1,15 @@
-// Step 1: Import the parts of the module you want to use
+// Importamos los modulos de Mercadopago
 import { MercadoPagoConfig, Payment, Preference } from "mercadopago";
 
-// Step 2: Initialize the client object
+// Inicializamos el objeto del cliente
 const client = new MercadoPagoConfig({
   accessToken: process.env.MP_TOKEN as string,
   options: { timeout: 5000, idempotencyKey: "abc" },
 });
 
-const BASE_URL = process.env.VERCEL_URL || "apx.school";
+const BASE_URL = process.env.VERCEL_URL || "google.com";
 
-// Step 3: Initialize the API object
+// Inicializamos la preferencia con el objeto del cliente
 const pref = new Preference(client);
 
 type CreatePrefOptions = {
@@ -39,7 +39,7 @@ export async function createSingleProductPreference(
           title: options.productName,
           description: options.productDescription,
           quantity: 1,
-          currency_id: "ARS",
+          currency_id: "COP",
           unit_price: options.productPrice,
         },
       ],
